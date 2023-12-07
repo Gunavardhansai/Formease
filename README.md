@@ -6,9 +6,7 @@ After coding many HTML forms, the idea of a form generator seemed necessary.
 Formease will significantly reduce the amount of time it takes to hand code HTML forms.
 
 
-## USE ONLINE
 
-The project is hosted on https://jaduri.github.io/formease/
 
 ## RUN ON LOCAL MACHINE
 
