@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FormEase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin-top: 50px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .progress-container {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .progress-circle {
+      width: 70px;
+      height: 70px;
+      background-color: #ccc;
+      border-radius: 50%;
+      margin: 0 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .progress-circle.active {
+      background-color: #95af4c;
+    }
+
+    button {
+      margin-top: 40px;
+      background-color: #6c666c;
+      border-radius: 20px;
+      width: 30px;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 20px;
+      font-size: 18px;
+      outline: none;
+      width: 30%;
+      text-align: center;
+    }
+
+    section {
+      width: 80%;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      display: none;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .form-group {
+      flex: 1 1 calc(33.3333% - 8px);
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      width: calc(50% - 8px);
+    }
+
+    input, select {
+      width: calc(50% - 8px);
+      padding: 10px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+    .switch {
+      width: calc(50% - 8px);
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .slider {
+      width: 60px;
+      height: 34px;
+      position: relative;
+      cursor: pointer;
+      margin-left: 8px;
+      background-color: #ccc;
+      border-radius: 34px;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #4caf50;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+  </style>
+</head>
+<body>
+<h2>Arbitration Forms</h2>
+  <div class="progress-container">
+    <div class="progress-circle active" onclick="goToSection(1)">1</div>
+    <div class="progress-circle" onclick="goToSection(2)">2</div>
+    <div class="progress-circle" onclick="goToSection(3)">3</div>
+    <div class="progress-circle" onclick="goToSection(4)">4</div>
+  </div>
+
+  <section id="section1">
+    <h2>Initial Information (Fill all the details)</h2>
+    <form id="initialForm">
+      <form id="legalForm">
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+    
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="Address">Address:</label>
+          <input type="text" id="Address" name="Address" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="zipCode">Zip/Postal Code:</label>
+          <input type="text" id="zipCode" name="zipCode" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="country">Country:</label>
+          <input type="text" id="country" name="country" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="Email">Email:</label>
+          <input type="email" id="Email" name="Email" required>
+        </div>
+       
+       
+      </form>
+      <button type="button" onclick="nextSection(1)">Next</button>
+    </form>
+  </section>
+
+  <section id="section2">
+    <h2>Booking Party Information <i>(Enter as much as possible)</i></h2>
+    <label>Use Information On Account?</label>
+
+    <label class="switch">
+      <input type="checkbox" name="userInformation" checked >
+      <span class="slider"></span>
+    </label>
+    <form id="partyForm">
+        <div class="form-group">
+          <label for="fireName">Firm Name:</label>
+          <input type="text" id="fireName" name="fireName" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="bookingContact">Booking Contact No:</label>
+          <input type="tel" id="bookingContact" name="bookingContact" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="billingAddress">Billing Address:</label>
+          <input type="text" id="billingAddress" name="billingAddress" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="zipCode">Zip/Postal Code:</label>
+          <input type="text" id="zipCode" name="zipCode" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="country">Country:</label>
+          <input type="text" id="country" name="country" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="role">Role:</label>
+          <select id="role" name="role" required>
+            <option value="client">Client</option>
+            <option value="representative">Representative</option>
+          </select>
+        </div>
+    
+        <div class="form-group">
+          <label for="clientName">Name of Represented Client:</label>
+          <input type="text" id="clientName" name="clientName" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="leadCounselName">Lead Counsel Name:</label>
+          <input type="text" id="leadCounselName" name="leadCounselName" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="leadCounselEmail">Lead Counsel Email:</label>
+          <input type="email" id="leadCounselEmail" name="leadCounselEmail" required>
+        </div>
+       
+      </form>
+      <h2>Opposing party Information</h2>
+      <form id="legalForm">
+        <div class="form-group">
+          <label for="fireName">Fire Name:</label>
+          <input type="text" id="fireName" name="fireName" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="bookingContact">Booking Contact No:</label>
+          <input type="tel" id="bookingContact" name="bookingContact" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="billingAddress">Billing Address:</label>
+          <input type="text" id="billingAddress" name="billingAddress" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="zipCode">Zip/Postal Code:</label>
+          <input type="text" id="zipCode" name="zipCode" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="country">Country:</label>
+          <input type="text" id="country" name="country" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="role">Role:</label>
+          <select id="role" name="role" required>
+            <option value="client">Client</option>
+            <option value="representative">Representative</option>
+          </select>
+        </div>
+    
+        <div class="form-group">
+          <label for="clientName">Name of Represented Client:</label>
+          <input type="text" id="clientName" name="clientName" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="leadCounselName">Lead Counsel Name:</label>
+          <input type="text" id="leadCounselName" name="leadCounselName" required>
+        </div>
+    
+        <div class="form-group">
+          <label for="leadCounselEmail">Lead Counsel Email:</label>
+          <input type="email" id="leadCounselEmail" name="leadCounselEmail" required>
+        </div>
+
+        
+
+    </form>
+        <button type="button" id="addFormButton">+ Additional parties</button>
+
+        <div id="additionalForms" class="added-form"></div>
+       
+
+      <script>
+        document.getElementById('legalForm').addEventListener('submit', function (event) {
+          event.preventDefault();
+        });
+    
+        document.getElementById('addFormButton').addEventListener('click', function () {
+          const additionalFormsContainer = document.getElementById('additionalForms');
+          const newForm = document.createElement('div');
+          newForm.className = 'added-form';
+    
+          const clonedForm = document.getElementById('legalForm').cloneNode(true);
+          clonedForm.id = ''; 
+    
+          newForm.appendChild(clonedForm);
+          additionalFormsContainer.appendChild(newForm);
+        });
+      </script>
+    
+  
+      <button type="button" onclick="nextSection(2)">Next</button>
+    </form>
+  </section>
+
+  <section id="section3">
+    <h2>Logistics</h2>
+    <form id="logisticsForm">
+      <form id="logisticsForm">
+        <h2>Basic Logistics</h2>
+        <div id="uploadContainer">
+          <div id="fileNameLabel">Upload Cover page(optional) </div>
+          <input type="file" id="fileInput" onchange="displayFileName()" />
+          
+        </div>
+      
+        <script>
+          function chooseFile() {
+            document.getElementById('fileInput').click();
+          }
+      
+          function displayFileName() {
+            const fileInput = document.getElementById('fileInput');
+            const fileNameLabel = document.getElementById('fileNameLabel');
+      
+            if (fileInput.files.length > 0) {
+              fileNameLabel.textContent = 'Selected File: ' + fileInput.files[0].name;
+            } else {
+              fileNameLabel.textContent = '';
+            }
+          }
+        </script>
+        <label for="styleOfCause">Style of Cause:</label>
+        <input type="text" id="styleOfCause" name="styleOfCause" required>
+    
+        <label for="countFile">Count File:</label>
+        <input type="text" id="countFile" name="countFile" required>
+    
+        <label for="bookingDate">Booking Date:</label>
+        <input type="date" id="bookingDate" name="bookingDate" required>
+    
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required>
+    
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required>
+    
+        <label for="arbitrationWithName">Arbitration with Name:</label>
+        <input type="text" id="arbitrationWithName" name="arbitrationWithName" required>
+    
+        <label for="arbitrationWithEmail">Arbitration with Email:</label>
+        <input type="email" id="arbitrationWithEmail" name="arbitrationWithEmail" required>
+    
+        <label for="tribunalSecretary" class="switch">
+          Tribunal Secretary:
+          
+          <label class="switch">
+            <input type="checkbox" name="userInformation" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+        <br>
+    <nbsp>
+        <label for="witnessName">Witness Name:</label>
+        <input type="text" id="witnessName" name="witnessName" required>
+    </nbsp>
+    
+        <label for="witnessEmail">Witness Email:</label>
+        <input type="email" id="witnessEmail" name="witnessEmail" required>
+      
+        </form>
+    <form>
+        <h2>Virtual Logistics</h2><br>
+        <nbsp>
+        <label for="requireVCM" class="switch">
+          Do you require VCM (Virtual Case Management)?
+          <label class="switch">
+            <br>
+            <input type="checkbox" name="userInformation" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+      </nbsp>
+    
+        <label for="vcmInput1">Is their a partivular VCM you want to work with?</label>
+        <input type="text" id="vcmInput1" name="vcmInput1" required>
+    
+        <label for="role">Select a virtual platform</label>
+        <select id="role" name="role" required>
+          <option value="client">Zoom</option>
+          <option value="representative">Google meet</option>
+        </select>
+    
+        <label for="vcmInput3">Number of virtual breakout rooms</label>
+        <input type="text" id="vcmInput3" name="vcmInput3" required>
+    
+        <label for="requireDocManaging" class="switch">
+         Do you need us to provide Document Managing Services?
+          <label class="switch">
+            <input type="checkbox" name="userInformation" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+    <br><br><nbsp>
+        <label for="additionalInput">Do you have any special accommodations for your booking that our I.T.team can look into prior to the start date?</label>
+      </nbsp>
+        <input type="text" id="additionalInput" name="additionalInput" required>
+        
+      </form>
+    
+      <script>
+        document.getElementById('logisticsForm').addEventListener('submit', function (event) {
+          event.preventDefault();
+        });
+      </script>
+      <button type="button" onclick="nextSection(3)">Next</button>
+    </form>
+  </section>
+
+  <section id="section4">
+    <h2>Court Reporting</h2>
+    <form id="additionalServicesForm">
+      
+      
+        <label for="requireVCM" class="switch">
+         Will this matter plan to have a Court Reporter?
+          <label class="switch">
+            <input type="checkbox" name="userInformation" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+        <label for="requireVCM" class="switch">
+          Would you like an Arbitration Place Court Reporter?
+          <label class="switch">
+            <input type="checkbox" name="userInformation" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+        
+        <label for="additionalInput">Is there a specific Arbitration Place Court Reporter you prefer?</label>
+        <input type="text" id="additionalInput" name="additionalInput" required>
+  
+        <label for="requireVCM" class="switch">
+          Will a transcript be required?
+          <label class="switch">
+            <input type="checkbox" name="userInformation" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+        <label for="additionalInput">Turnaround time?</label>
+        <input type="text" id="additionalInput" name="additionalInput" required>
+  
+        <label for="requireVCM" class="switch">
+          Multilingual?
+          <label class="switch">
+            <input type="checkbox" name="userInformation" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+        <label for="additionalInput">Please list the non-english language you would like accommodated(separate by comma)</label>
+        <input type="text" id="additionalInput" name="additionalInput" required><label for="additionalInput">Daily Rough Draft?</label>
+        <input type="text" id="additionalInput" name="additionalInput" required><label for="additionalInput">Realtime reporting?</label>
+        <input type="text" id="additionalInput" name="additionalInput" required>
+  
+      </form>
+      <h2>Additional Features</h2>
+      <form id="AdditionalForm">
+        <label for="requireVCM" class="switch">
+          Do you require interpretation?
+          <label class="switch">
+            <input type="checkbox" name="userInformation" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+        <label for="additionalInput">Please list all languages to be interpreted(separate by comma)</label>
+        <input type="text" id="additionalInput" name="additionalInput" required>
+        <label for="requireVCM" class="switch">
+          Do you require CART services?
+          <label class="switch">
+            <input type="checkbox" name="userInformation" checked>
+            <span class="slider"></span>
+          </label>
+        </label><label for="requireVCM" class="switch">
+          Will you need a quote prior to confirmation?
+          <label class="switch">
+            <input type="checkbox" name="userInformation" checked>
+            <span class="slider"></span>
+          </label>
+        </label>
+        <label for="additionalInput">Please list any additional requests or considerations you might have at this time</label>
+        <input type="text" id="additionalInput" name="additionalInput" required>
+
+    </form>
+    <button type="button" onclick="nextSection(4)">Submit</button>
+  </section>
+
+  <script>
+    let currentSection = 1;
+
+    function toggleSection(sectionNumber) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach((section) => {
+        section.style.display = 'none';
+      });
+
+      const circles = document.querySelectorAll('.progress-circle');
+      circles.forEach((circle, index) => {
+        circle.classList.remove('active');
+        if (index + 1 <= sectionNumber) {
+          circle.classList.add('active');
+        }
+      });
+
+      const selectedSection = document.getElementById(`section${sectionNumber}`);
+      selectedSection.style.display = 'block';
+      currentSection = sectionNumber;
+    }
+
+    function nextSection(currentSection) {
+      toggleSection(currentSection + 1);
+    }
+
+    function goToSection(sectionNumber) {
+      toggleSection(sectionNumber);
+    }
+  </script>
+
+</body>
+</html>
